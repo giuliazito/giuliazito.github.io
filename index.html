@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Name</title>
+  <meta name="description" content="One sentence describing what your project does.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="#top">Project Name</a>
+    <nav aria-label="Main">
+      <a href="#install">Install</a>
+      <a href="#features">Features</a>
+      <a href="#usage">Usage</a>
+      <a href="https://github.com/YOUR-USERNAME/YOUR-REPO">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Project Name</h1>
+      <p class="lead">Replace this with one clear sentence about what your project does and who it's for.</p>
+
+      <div class="command" role="group" aria-label="Install command">
+        <code id="install-cmd">npm install your-package</code>
+        <button type="button" id="copy-btn">Copy</button>
+      </div>
+
+      <p class="hero-links">
+        <a class="button primary" href="https://github.com/YOUR-USERNAME/YOUR-REPO">View on GitHub</a>
+        <a class="button" href="#usage">See an example</a>
+      </p>
+    </section>
+
+    <!-- INSTALL -->
+    <section id="install" class="block">
+      <h2>Install</h2>
+      <div class="block-body">
+        <p>Requirements: list any versions or tools people need first (for example, Node 18 or later).</p>
+        <pre><code>git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
+cd YOUR-REPO
+npm install</code></pre>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="block">
+      <h2>Features</h2>
+      <div class="block-body">
+        <dl class="features">
+          <dt>First feature</dt>
+          <dd>Say what it does for the person using it, in one or two plain sentences.</dd>
+
+          <dt>Second feature</dt>
+          <dd>Describe the result, not the implementation.</dd>
+
+          <dt>Third feature</dt>
+          <dd>Keep each description short enough to scan.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- USAGE -->
+    <section id="usage" class="block">
+      <h2>Usage</h2>
+      <div class="block-body">
+        <p>Show the smallest example that does something useful.</p>
+        <pre><code>import { doThing } from "your-package";
+
+const result = doThing("hello");
+console.log(result);</code></pre>
+        <p>Full documentation is in the <a href="https://github.com/YOUR-USERNAME/YOUR-REPO#readme">README</a>.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Released under the <a href="https://github.com/YOUR-USERNAME/YOUR-REPO/blob/main/LICENSE">MIT License</a>.</p>
+    <p>Made by <a href="https://github.com/YOUR-USERNAME">Your Name</a>.</p>
+  </footer>
+
+  <script>
+    // Copy the install command to the clipboard
+    const btn = document.getElementById("copy-btn");
+    const cmd = document.getElementById("install-cmd");
+
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(cmd.textContent);
+        btn.textContent = "Copied";
+      } catch (err) {
+        btn.textContent = "Press Ctrl+C";
+      }
+      setTimeout(() => (btn.textContent = "Copy"), 1800);
+    });
+  </script>
+
+</body>
+</html>

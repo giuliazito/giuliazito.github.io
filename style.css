@@ -1,0 +1,281 @@
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #f1f4f8;
+  --ink: #101b2d;
+  --muted: #55627a;
+  --line: #d3dae6;
+  --accent: #2447f5;
+  --accent-ink: #ffffff;
+  --code-bg: #101b2d;
+  --code-ink: #e8edf7;
+
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-code: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --page-width: 62rem;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.site-header nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* ---------- Layout ---------- */
+main {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 4.5rem 0 4rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  max-width: 34rem;
+  margin: 1.5rem 0 2rem;
+  font-size: 1.3rem;
+  color: var(--muted);
+}
+
+/* Install command with copy button */
+.command {
+  display: flex;
+  align-items: stretch;
+  max-width: 34rem;
+  background: var(--code-bg);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.command code {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  color: var(--code-ink);
+  font-family: var(--font-code);
+  font-size: 1rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.command button {
+  padding: 0 1.25rem;
+  border: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: var(--code-ink);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.command button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: rgba(16, 27, 45, 0.06);
+}
+
+.button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.button.primary:hover {
+  background: #1a38d0;
+  border-color: #1a38d0;
+}
+
+/* ---------- Content blocks ---------- */
+.block {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: 1rem 3rem;
+  padding: 3rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.block h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.block-body {
+  max-width: 42rem;
+}
+
+.block-body > :first-child {
+  margin-top: 0;
+}
+
+.block-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Feature list */
+.features {
+  margin: 0;
+}
+
+.features dt {
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.features dt:first-child {
+  margin-top: 0;
+}
+
+.features dd {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+/* Code blocks */
+pre {
+  margin: 1.25rem 0;
+  padding: 1.25rem;
+  background: var(--code-bg);
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+pre code {
+  color: var(--code-ink);
+  font-family: var(--font-code);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  max-width: var(--page-width);
+  margin: 2rem auto 0;
+  padding: 2rem 1.5rem 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 720px) {
+  .hero {
+    padding: 3rem 0 3rem;
+  }
+
+  .block {
+    grid-template-columns: 1fr;
+    padding: 2.25rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

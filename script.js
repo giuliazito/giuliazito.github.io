@@ -15,36 +15,53 @@ if ("IntersectionObserver" in window) {
   revealEls.forEach((el) => el.classList.add("in"));
 }
 
+// ---- Pop-ups: shared behavior (X button, click outside, Escape) ----
+function setUpDialog(dialog) {
+  dialog.querySelector(".close").addEventListener("click", () => dialog.close());
+
+  // Close when clicking the dark area outside the pop-up
+  dialog.addEventListener("click", (e) => {
+    const r = dialog.getBoundingClientRect();
+    const inside = e.clientX >= r.left && e.clientX <= r.right &&
+                   e.clientY >= r.top && e.clientY <= r.bottom;
+    if (!inside) dialog.close();
+  });
+
+  // Give the page its scrolling back once the pop-up is closed
+  dialog.addEventListener("close", () => {
+    document.documentElement.classList.remove("locked");
+  });
+}
+
+function openDialog(dialog) {
+  dialog.showModal();
+  document.documentElement.classList.add("locked");
+}
+
 // ---- Project pop-up: clicking a tile opens its details ----
-const dialog = document.getElementById("project-dialog");
-const dialogTitle = document.getElementById("dialog-title");
-const dialogChart = dialog.querySelector(".dialog-chart");
-const dialogBody = dialog.querySelector(".dialog-body");
+const projectDialog = document.getElementById("project-dialog");
+const projectTitle = document.getElementById("dialog-title");
+const projectChart = projectDialog.querySelector(".dialog-chart");
+const projectBody = projectDialog.querySelector(".dialog-body");
+setUpDialog(projectDialog);
 
 document.querySelectorAll(".project").forEach((project) => {
-  const tile = project.querySelector(".tile");
-
-  tile.addEventListener("click", () => {
-    dialogTitle.textContent = project.querySelector(".tile-title").textContent;
-    dialogChart.innerHTML = "";
-    dialogChart.appendChild(project.querySelector(".chart").cloneNode(true));
-    dialogBody.innerHTML = project.querySelector(".detail").innerHTML;
-
-    dialog.showModal();
-    document.documentElement.classList.add("locked");
+  project.querySelector(".tile").addEventListener("click", () => {
+    projectTitle.textContent = project.querySelector(".tile-title").textContent;
+    projectChart.innerHTML = "";
+    projectChart.appendChild(project.querySelector(".chart").cloneNode(true));
+    projectBody.innerHTML = project.querySelector(".detail").innerHTML;
+    openDialog(projectDialog);
   });
 });
 
-dialog.querySelector(".close").addEventListener("click", () => dialog.close());
+// ---- Resume pop-up: clicking the page opens a bigger version ----
+const resumeDialog = document.getElementById("resume-dialog");
+const resumePaper = resumeDialog.querySelector(".dialog-paper");
+setUpDialog(resumeDialog);
 
-// Close when clicking the dark area outside the pop-up
-dialog.addEventListener("click", (e) => {
-  const r = dialog.getBoundingClientRect();
-  const inside = e.clientX >= r.left && e.clientX <= r.right &&
-                 e.clientY >= r.top && e.clientY <= r.bottom;
-  if (!inside) dialog.close();
-});
-
-dialog.addEventListener("close", () => {
-  document.documentElement.classList.remove("locked");
+document.querySelector(".resume-open").addEventListener("click", () => {
+  resumePaper.innerHTML = "";
+  resumePaper.appendChild(document.querySelector(".paper-wrap").cloneNode(true));
+  openDialog(resumeDialog);
 });

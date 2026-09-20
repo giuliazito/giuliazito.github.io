@@ -10,24 +10,17 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="nav-name" href="#top">Your Name</a>
-      <nav aria-label="Main">
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
   <main id="top">
 
     <!-- INTRO -->
     <section class="intro">
       <h1 class="reveal">Your Name</h1>
       <p class="reveal">Description</p>
+      <ul class="intro-links reveal" aria-label="Sections">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </section>
 
     <!-- PROJECTS -->
@@ -151,28 +144,38 @@
       </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="section">
+    <!-- RESUME -->
+    <section id="resume" class="section">
       <div class="container">
-        <h2 class="section-title reveal">Education</h2>
-        <ul class="timeline">
-          <li class="reveal">
-            <span class="when">Year – Year</span>
-            <div>
-              <h3>Degree, Field of study</h3>
-              <p>University name</p>
-              <p class="note">Description</p>
-            </div>
-          </li>
-          <li class="reveal">
-            <span class="when">Year – Year</span>
-            <div>
-              <h3>Degree, Field of study</h3>
-              <p>University name</p>
-              <p class="note">Description</p>
-            </div>
-          </li>
-        </ul>
+        <h2 class="section-title reveal">Resume</h2>
+
+        <div class="resume reveal">
+          <button class="resume-open" type="button" aria-label="Open resume">
+            <span class="paper-wrap">
+              <span class="paper">
+                <span class="p-name">Your Name</span>
+                <span class="p-contact">email@example.com · (555) 555-5555 · City, State</span>
+
+                <span class="p-head">Experience</span>
+                <span class="p-row"><b>Job title</b><i>Year – Year</i></span>
+                <span class="p-sub">Company name</span>
+                <span class="p-text">Description of what you did and what came of it.</span>
+                <span class="p-text">Description of what you did and what came of it.</span>
+                <span class="p-row"><b>Job title</b><i>Year – Year</i></span>
+                <span class="p-sub">Company name</span>
+                <span class="p-text">Description of what you did and what came of it.</span>
+
+                <span class="p-head">Education</span>
+                <span class="p-row"><b>Degree, Field of study</b><i>Year – Year</i></span>
+                <span class="p-sub">University name</span>
+
+                <span class="p-head">Skills</span>
+                <span class="p-text">Skill one · Skill two · Skill three · Skill four</span>
+              </span>
+            </span>
+          </button>
+          <p class="resume-hint">Click to open</p>
+        </div>
       </div>
     </section>
 
@@ -201,6 +204,14 @@
     <h2 id="dialog-title"></h2>
     <div class="dialog-chart"></div>
     <div class="dialog-body"></div>
+  </dialog>
+
+  <!-- RESUME POP-UP -->
+  <dialog id="resume-dialog" aria-labelledby="resume-dialog-title">
+    <button class="close" type="button" aria-label="Close">&times;</button>
+    <h2 id="resume-dialog-title">Resume</h2>
+    <div class="dialog-paper"></div>
+    <p class="dialog-actions"><a class="link" href="resume.pdf" download>Download PDF</a></p>
   </dialog>
 
   <script src="script.js"></script>

@@ -5,14 +5,14 @@
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-code: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
-  --bg: #ffffff;
-  --bg-alt: #f5f5f7;
-  --tile: #ffffff;
-  --ink: #1d1d1f;
-  --muted: #6e6e73;
-  --line: #d2d2d7;
-  --accent: #0071e3;
-  --accent-soft: rgba(0, 113, 227, 0.14);
+  --bg: #FFCC99;
+  --tint: rgba(102, 0, 0, 0.08);
+  --tile: transparent;
+  --ink: #660000;
+  --muted: #660000;
+  --line: #660000;
+  --accent: #660000;
+  --accent-soft: rgba(102, 0, 0, 0.16);
 
   --radius: 28px;
   --width: 1080px;
@@ -23,7 +23,7 @@
    ========================================================== */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+html { scroll-behavior: smooth; scroll-padding-top: 0; }
 html.locked { overflow: hidden; }
 
 body {
@@ -42,35 +42,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 .container { max-width: var(--width); margin: 0 auto; padding: 0 1.5rem; }
 
 /* ==========================================================
-   NAV (thin, translucent, sticks to the top)
-   ========================================================== */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  max-width: var(--width);
-  height: 52px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.nav-name { color: var(--ink); font-weight: 600; text-decoration: none; }
-.nav nav { display: flex; gap: 1.75rem; }
-.nav nav a { color: var(--muted); font-size: 0.9rem; text-decoration: none; }
-.nav nav a:hover { color: var(--ink); }
-
-/* ==========================================================
    INTRO (fills the first screen)
    ========================================================== */
 .intro {
@@ -78,8 +49,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 52px);
-  min-height: calc(100svh - 52px);
+  min-height: 100vh;
+  min-height: 100svh;
   padding: 4rem 1.5rem;
   text-align: center;
 }
@@ -100,11 +71,30 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   color: var(--muted);
 }
 
+.intro-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+}
+
+.intro-links li + li::before {
+  content: "\00B7";
+  margin: 0 0.9em;
+  color: var(--muted);
+}
+
+.intro-links a { text-decoration: none; }
+.intro-links a:hover { text-decoration: underline; }
+
 /* ==========================================================
    SECTIONS
    ========================================================== */
 .section { padding: 7rem 0; }
-.section.alt { background: var(--bg-alt); }
+.section { border-top: 2px solid var(--accent); }
 
 .section-title {
   margin: 0 0 3rem;
@@ -131,7 +121,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   width: 100%;
   min-height: 380px;
   padding: 2.25rem 2.25rem 1.75rem;
-  border: 0;
+  border: 2px solid var(--accent);
   border-radius: var(--radius);
   background: var(--tile);
   color: var(--ink);
@@ -158,9 +148,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 .chart .dots circle { fill: var(--accent); }
 .chart .bars rect   { fill: var(--accent); rx: 6; }
 .chart .trend  { stroke: var(--muted); stroke-width: 2; stroke-dasharray: 6 6; }
-.chart .ring-base { stroke: var(--bg-alt); }
+.chart .ring-base { stroke: var(--accent-soft); }
 .chart .ring-a    { stroke: var(--accent); }
-.chart .ring-b    { stroke: var(--muted); }
+.chart .ring-b    { stroke: var(--accent); opacity: 0.45; }
 
 /* ==========================================================
    PROJECT POP-UP
@@ -170,7 +160,7 @@ dialog {
   max-height: calc(100% - 3rem);
   margin: auto;
   padding: 3rem;
-  border: 0;
+  border: 2px solid var(--accent);
   border-radius: var(--radius);
   background: var(--bg);
   color: var(--ink);
@@ -178,7 +168,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(60, 0, 0, 0.55);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
@@ -202,48 +192,93 @@ dialog h2 {
   height: 40px;
   border: 0;
   border-radius: 50%;
-  background: var(--bg-alt);
+  background: var(--tint);
   color: var(--ink);
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
 }
-.close:hover { background: var(--line); }
+.close:hover { background: rgba(102, 0, 0, 0.2); }
 
 .dialog-chart {
   margin-bottom: 2rem;
   padding: 2rem;
   border-radius: 20px;
-  background: var(--bg-alt);
+  background: var(--tint);
 }
 .dialog-chart .chart { max-height: 260px; }
-.dialog-chart .ring-base { stroke: var(--line); }
+.dialog-chart .ring-base { stroke: var(--accent-soft); }
 
 .dialog-body p { max-width: 40rem; margin: 0 0 1rem; }
 .dialog-body p:first-child { font-size: 1.35rem; line-height: 1.4; color: var(--muted); }
 
 .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; padding: 0; list-style: none; }
-.tags li { padding: 0.25rem 0.85rem; border-radius: 999px; background: var(--bg-alt); font-size: 0.9rem; }
+.tags li { padding: 0.25rem 0.85rem; border-radius: 999px; background: var(--tint); font-size: 0.9rem; }
 
 .link { font-weight: 500; }
 
 /* ==========================================================
-   EDUCATION
+   RESUME (looks like a PDF page; click to enlarge)
    ========================================================== */
-.timeline { margin: 0; padding: 0; list-style: none; }
+.resume { display: flex; flex-direction: column; align-items: center; }
 
-.timeline li {
-  display: grid;
-  grid-template-columns: 12rem 1fr;
-  gap: 0.5rem 2rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--line);
+.resume-open {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.resume-open:hover { transform: translateY(-6px); }
+
+.paper-wrap {
+  display: block;
+  width: min(360px, calc(100vw - 3rem));
+  container-type: inline-size;
 }
 
-.when { color: var(--muted); }
-.timeline h3 { margin: 0; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
-.timeline p { margin: 0.25rem 0 0; }
-.timeline .note { color: var(--muted); }
+/* Everything inside the page is sized in em, so it scales like a real PDF */
+.paper {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
+  padding: 4.5em 4.5em 3em;
+  overflow: hidden;
+  background: #fff;
+  color: #1d1d1f;
+  border: 2px solid var(--accent);
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(102, 0, 0, 0.15), 0 20px 50px rgba(102, 0, 0, 0.3);
+  font-size: 6px;                    /* fallback */
+  font-size: calc(100cqw / 60);      /* page is 60em wide */
+  line-height: 1.45;
+  text-align: left;
+}
+
+.paper > span { display: block; }
+.p-name    { font-size: 2.6em; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.p-contact { margin-top: 0.4em; color: #6e6e73; }
+.p-head    { margin-top: 1.8em; padding-bottom: 0.2em; border-bottom: 1px solid #1d1d1f; font-size: 1.05em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.p-row     { display: flex !important; justify-content: space-between; margin-top: 0.9em; }
+.p-row i   { font-style: normal; color: #6e6e73; }
+.p-sub     { color: #6e6e73; }
+.p-text    { margin-top: 0.25em; }
+
+.resume-hint { margin: 1.5rem 0 0; color: var(--muted); font-size: 0.95rem; }
+
+/* Pop-up version: same page, bigger */
+.dialog-paper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 20px;
+  background: var(--tint);
+}
+.dialog-paper .paper-wrap { width: min(720px, 100%); }
+
+.dialog-actions { margin: 1.5rem 0 0; }
 
 /* ==========================================================
    CONTACT
@@ -283,14 +318,13 @@ dialog h2 {
   .section { padding: 4.5rem 0; }
   .grid { grid-template-columns: 1fr; }
   .tile { min-height: 320px; padding: 1.75rem 1.5rem 1.25rem; }
-  .timeline li { grid-template-columns: 1fr; }
   dialog { padding: 2rem 1.5rem; }
-  .nav nav { gap: 1.1rem; }
+  .dialog-paper { padding: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .tile { transition: none; }
+  .tile, .resume-open { transition: none; }
   dialog[open] { animation: none; }
 }

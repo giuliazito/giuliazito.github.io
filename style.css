@@ -5,14 +5,14 @@
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-code: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
-  --bg: #FFCC99;
-  --tint: rgba(102, 0, 0, 0.08);
+  --bg: #6F4E37;
+  --tint: rgba(255, 248, 220, 0.08);
   --tile: transparent;
-  --ink: #660000;
-  --muted: #660000;
-  --line: #660000;
-  --accent: #660000;
-  --accent-soft: rgba(102, 0, 0, 0.16);
+  --ink: #FFF8DC;
+  --muted: #FFF8DC;
+  --line: #FFF8DC;
+  --accent: #FFF8DC;
+  --accent-soft: rgba(255, 248, 220, 0.18);
 
   --radius: 28px;
   --width: 1080px;
@@ -63,12 +63,21 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   letter-spacing: -0.04em;
 }
 
-.intro p {
+.intro .tagline {
   max-width: 36rem;
   margin: 1.5rem 0 0;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  line-height: 1.35;
-  color: var(--muted);
+  font-size: clamp(1.4rem, 3.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.intro .about {
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.5;
+  opacity: 0.85;
 }
 
 .intro-links {
@@ -109,7 +118,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
    ========================================================== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: 1.5rem;
 }
 
@@ -142,6 +151,15 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 
 /* Graph previews */
 .chart { width: 100%; height: auto; max-height: 220px; }
+img.chart {
+  display: block;
+  object-fit: contain;
+  max-height: 300px;
+  border-radius: 14px;
+  background: #fff;
+}
+.dialog-chart img.chart { max-height: none; height: auto; }
+
 .chart .axis   { stroke: var(--line); stroke-width: 2; }
 .chart .series { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
 .chart .area   { fill: var(--accent-soft); }
@@ -168,7 +186,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgba(60, 0, 0, 0.55);
+  background: rgba(25, 15, 8, 0.6);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
@@ -198,7 +216,7 @@ dialog h2 {
   line-height: 1;
   cursor: pointer;
 }
-.close:hover { background: rgba(102, 0, 0, 0.2); }
+.close:hover { background: rgba(255, 248, 220, 0.2); }
 
 .dialog-chart {
   margin-bottom: 2rem;
@@ -211,6 +229,9 @@ dialog h2 {
 
 .dialog-body p { max-width: 40rem; margin: 0 0 1rem; }
 .dialog-body p:first-child { font-size: 1.35rem; line-height: 1.4; color: var(--muted); }
+
+.bullets { max-width: 40rem; margin: 0 0 1rem; padding-left: 1.25rem; }
+.bullets li { margin-bottom: 0.4rem; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; padding: 0; list-style: none; }
 .tags li { padding: 0.25rem 0.85rem; border-radius: 999px; background: var(--tint); font-size: 0.9rem; }
@@ -250,28 +271,24 @@ dialog h2 {
   color: #1d1d1f;
   border: 2px solid var(--accent);
   border-radius: 2px;
-  box-shadow: 0 2px 6px rgba(102, 0, 0, 0.15), 0 20px 50px rgba(102, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 20px 50px rgba(0, 0, 0, 0.35);
   font-size: 6px;                    /* fallback */
   font-size: calc(100cqw / 60);      /* page is 60em wide */
   line-height: 1.45;
   text-align: left;
 }
 
+img.paper { display: block; height: auto; padding: 0; object-fit: cover; }
 .paper > span { display: block; }
-.p-name    { font-size: 2.6em; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
-.p-contact { margin-top: 0.4em; color: #6e6e73; }
-.p-head    { margin-top: 1.8em; padding-bottom: 0.2em; border-bottom: 1px solid #1d1d1f; font-size: 1.05em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-.p-row     { display: flex !important; justify-content: space-between; margin-top: 0.9em; }
-.p-row i   { font-style: normal; color: #6e6e73; }
-.p-sub     { color: #6e6e73; }
-.p-text    { margin-top: 0.25em; }
 
 .resume-hint { margin: 1.5rem 0 0; color: var(--muted); font-size: 0.95rem; }
 
 /* Pop-up version: same page, bigger */
 .dialog-paper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
   padding: 2rem;
   border-radius: 20px;
   background: var(--tint);
@@ -292,6 +309,7 @@ dialog h2 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem 2rem;
+  max-width: none !important;
   margin-top: 2.5rem !important;
   font-size: 1.25rem !important;
 }

@@ -55,13 +55,10 @@ document.querySelectorAll(".project").forEach((project) => {
   });
 });
 
-// ---- Resume pop-up: clicking the page opens a bigger version ----
+// ---- Resume pop-up: clicking the page opens both pages, bigger ----
 const resumeDialog = document.getElementById("resume-dialog");
-const resumePaper = resumeDialog.querySelector(".dialog-paper");
 setUpDialog(resumeDialog);
 
 document.querySelector(".resume-open").addEventListener("click", () => {
-  resumePaper.innerHTML = "";
-  resumePaper.appendChild(document.querySelector(".paper-wrap").cloneNode(true));
   openDialog(resumeDialog);
 });

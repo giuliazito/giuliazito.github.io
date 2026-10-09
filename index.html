@@ -14,12 +14,14 @@
 
     <!-- INTRO -->
     <section class="intro">
+      <img class="avatar reveal" src="profile.png" alt="Illustrated portrait of Giulia Zito">
       <h1 class="reveal">Giulia Zito</h1>
       <p class="tagline reveal">Uncovering data-driven solutions.</p>
       <p class="about reveal">Expert in data cleaning and processing to build visualization and statistical models to back data-driven business decisions.</p>
       <ul class="intro-links reveal" aria-label="Sections">
         <li><a href="#projects">Projects</a></li>
         <li><a href="#resume">Resume</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </section>
@@ -38,17 +40,23 @@
               <img class="chart" src="airbnb-cleaning-plot.png" alt="Histograms of Airbnb listing availability before and after data cleaning">
             </button>
             <div class="detail" hidden>
-              <p>A work-in-progress analysis of NYC Airbnb open data: cleaning it thoroughly first, so the factors behind listing prices can be trusted.</p>
-              <p>The raw file has 102,599 listings across 26 columns. I standardized column names, removed 541 duplicate rows, converted price and service fee from text to numbers, parsed review dates, and handled missing values by filling in what could be inferred, labeling missing categories as Unknown, and dropping rows rather than fabricating data.</p>
+              <p>The goal and motive of this project were to practice my data cleaning and visualization skills using Python's pandas, matplotlib and seaborn libraries.</p>
+              <p>The data is from Kaggle, and it represents New York City Airbnb open data.</p>
+              <p>The process I followed for this project is the following:</p>
               <ul class="bullets">
-                <li>Fixed a misspelled borough ("brookln" to Brooklyn) and standardized text formatting.</li>
-                <li>Corrected 414 negative availability values and capped 2,664 impossible ones (over 365 days) at 365.</li>
-                <li>Corrected 13 negative minimum-night values and capped 31 that were over 365.</li>
-                <li>Removed a review date that was set in the future.</li>
+                <li>Column standardization</li>
+                <li>Duplicate dropping</li>
+                <li>Data type formatting</li>
+                <li>Missing values</li>
+                <li>Value mapping</li>
+                <li>Outlier handling</li>
               </ul>
-              <p>The graph above compares availability before and after cleaning. Next up: exploring how borough, room type, reviews and host factors relate to price, with early charts already covering price by room type, a correlation heatmap and a map of listings.</p>
+              <p>For the analysis and visualization, my goal was to determine price and location for a potential new listing. I started out looking at how the different room types were priced across the boroughs of NYC, and then focused on Brooklyn's demand and supply distribution. Using number of listings and median reviews per month as a proxy for demand and supply, I identified the top three areas of Brooklyn with a lower number of listings per monthly review, indicating the best opportunity areas for a potential new listing and the median price per room type in that area.</p>
               <ul class="tags"><li>Python</li><li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>Seaborn</li><li>Jupyter</li></ul>
-              <p><a class="link" href="https://github.com/giuliazito">View on GitHub</a></p>
+              <p class="detail-links">
+                <a class="link" href="Airbnb_Analysis.ipynb" download>Download Notebook (.ipynb)</a>
+                <a class="link" href="https://github.com/giuliazito">View on GitHub</a>
+              </p>
             </div>
           </article>
 
@@ -69,10 +77,22 @@
         <div class="resume reveal">
           <button class="resume-open" type="button" aria-label="Open resume">
             <span class="paper-wrap">
-              <img class="paper" src="resume-page-1.png" alt="First page of Giulia Zito's resume">
+              <img class="paper" src="resume-page-1.png" alt="Giulia Zito's resume">
             </span>
           </button>
           <p class="resume-hint">Click to open</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="about-text reveal">
+          <p>Hi!</p>
+          <p>I'm so happy you're here! I am Giulia and I'm a graduate student focusing in Data Analytics and Data Science. My interest for working with data started during my undergraduate Chemistry degree, where I enjoyed analyzing my lab's data in Excel and applying its insights. Now, after diving deeper into statistical analysis, machine learning, and visualization, I want to dedicate myself to using my problem solving mindset to analyze real data and retrieve insights that can have a real impact!</p>
+          <p>In my free time I enjoy working out, from running to yoga or tennis, you name it, and I'll enjoy it. I also really like going on walks with my dog Giorgio and relaxing while doing puzzles.</p>
         </div>
       </div>
     </section>
@@ -109,8 +129,7 @@
     <button class="close" type="button" aria-label="Close">&times;</button>
     <h2 id="resume-dialog-title">Resume</h2>
     <div class="dialog-paper">
-      <span class="paper-wrap"><img class="paper" src="resume-page-1.png" alt="Resume, page 1 of 2"></span>
-      <span class="paper-wrap"><img class="paper" src="resume-page-2.png" alt="Resume, page 2 of 2"></span>
+      <span class="paper-wrap"><img class="paper" src="resume-page-1.png" alt="Giulia Zito's resume"></span>
     </div>
     <p class="dialog-actions"><a class="link" href="resume.pdf" download>Download PDF</a></p>
   </dialog>

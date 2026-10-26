@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Giulia Zito</title>
   <meta name="description" content="Expert in data cleaning and processing to build visualization and statistical models that support data-driven business decisions.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
   <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -12,98 +18,102 @@
 
   <main id="top">
 
-    <!-- INTRO -->
-    <section class="intro">
-      <img class="avatar reveal" src="profile.png" alt="Illustrated portrait of Giulia Zito">
-      <h1 class="reveal">Giulia Zito</h1>
-      <p class="tagline reveal">Uncovering data-driven solutions.</p>
-      <p class="about reveal">Expert in data cleaning and processing to build visualization and statistical models that support data-driven business decisions.</p>
-      <ul class="intro-links reveal" aria-label="Sections">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </section>
+    <!-- HERO + PROJECTS (split screen: name on the left, work on the right) -->
+    <section class="hero-split">
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section alt">
-      <div class="container">
-        <h2 class="section-title reveal">Projects</h2>
+      <div class="hero-left">
+        <img class="avatar" src="profile.png" alt="Illustrated portrait of Giulia Zito">
+        <h1>Giulia Zito</h1>
+        <p class="tagline">Uncovering data-driven solutions.</p>
+        <ul class="intro-links" aria-label="Sections">
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="hero-right">
+        <h2 class="section-title scalehead" id="projects">Projects</h2>
 
         <div class="grid">
 
           <!-- Project 1 -->
-          <article class="project reveal">
+          <article class="project">
             <button class="tile" type="button">
-              <span class="tile-title">NYC Airbnb Pricing and Brooklyn Opportunity Analysis</span>
               <img class="chart" src="airbnb-cleaning-plot.png" alt="Histograms of Airbnb listing availability before and after data cleaning">
+              <span class="tile-title">NYC Airbnb Pricing and Brooklyn Opportunity Analysis</span>
             </button>
+
             <div class="detail" hidden>
+              <p class="eyebrow">Case Study &middot; Data Cleaning &amp; Analysis</p>
               <p>The goal and motive of this project were to practice my data cleaning and visualization skills using Python's pandas, matplotlib and seaborn libraries.</p>
               <p>The data is from Kaggle, and it represents New York City Airbnb open data.</p>
-              <p>The process I followed for this project is the following:</p>
-              <ul class="bullets">
-                <li>Column standardization</li>
-                <li>Duplicate dropping</li>
-                <li>Data type formatting</li>
-                <li>Missing values</li>
-                <li>Value mapping</li>
-                <li>Outlier handling</li>
-              </ul>
+
+              <h3>The process I followed</h3>
+              <ol class="process">
+                <li><span>Column standardization</span></li>
+                <li><span>Duplicate dropping</span></li>
+                <li><span>Data type formatting</span></li>
+                <li><span>Missing values</span></li>
+                <li><span>Value mapping</span></li>
+                <li><span>Outlier handling</span></li>
+              </ol>
+
+              <h3>Findings</h3>
               <p>For the analysis and visualization, my goal was to determine price and location for a potential new listing.</p>
               <p>I started out looking at how the different room types were priced across the boroughs of NYC, and then focused on Brooklyn's demand and supply distribution. Using number of listings and median monthly reviews as a proxy for supply and demand, I identified the top three neighborhood areas of Brooklyn that have a low number of listings per monthly review rate.</p>
               <p>This analysis indicates the best opportunity areas for a potential new listing and provides the median price per room type in those areas.</p>
+
               <ul class="tags"><li>Python</li><li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>Seaborn</li><li>Jupyter</li></ul>
+
               <p class="detail-links">
-                <a class="link" href="Airbnb_Analysis.ipynb" download>Download Notebook (.ipynb)</a>
-                <a class="link" href="https://github.com/giuliazito">View on GitHub</a>
+                <a class="button" href="Airbnb_Analysis.ipynb" download>Download Notebook (.ipynb)</a>
+                <a class="button ghost" href="https://github.com/giuliazito">View on GitHub</a>
               </p>
             </div>
           </article>
 
-
-
-
-
-
         </div>
       </div>
-    </section>
 
-    <!-- RESUME -->
-    <section id="resume" class="section">
-      <div class="container">
-        <h2 class="section-title reveal">Resume</h2>
-
-        <div class="resume reveal">
-          <button class="resume-open" type="button" aria-label="Open resume">
-            <span class="paper-wrap">
-              <img class="paper" src="resume-page-1.png" alt="Giulia Zito's resume">
-            </span>
-          </button>
-          <p class="resume-hint">Click to open</p>
-        </div>
-      </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title reveal">About Me</h2>
-        <div class="about-text reveal">
-          <p>Hi!</p>
-          <p>I'm so happy you're here! I am Giulia and I'm a graduate student focusing in Data Analytics and Data Science. My interest for working with data started during my undergraduate Chemistry degree, where I enjoyed analyzing my lab's data in Excel and applying its insights. Now, after diving deeper into statistical analysis, machine learning, and visualization, I want to dedicate myself to using my problem solving mindset to analyze real data and retrieve insights that can have a real impact!</p>
-          <p>In my free time I enjoy working out, from running to yoga or tennis, you name it, and I'll enjoy it. I also really like going on walks with my dog Giorgio and relaxing while doing puzzles.</p>
+        <h2 class="section-title scalehead">About Me</h2>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>Hi!</p>
+            <p>I'm so happy you're here! I am Giulia and I'm a graduate student focusing in Data Analytics and Data Science. My interest for working with data started during my undergraduate Chemistry degree, where I enjoyed analyzing my lab's data in Excel and applying its insights. Now, after diving deeper into statistical analysis, machine learning, and visualization, I want to dedicate myself to using my problem solving mindset to analyze real data and retrieve insights that can have a real impact!</p>
+            <p>In my free time I enjoy working out, from running to yoga or tennis, you name it, and I'll enjoy it. I also really like going on walks with my dog Giorgio and relaxing while doing puzzles.</p>
+            <p><a class="link" href="resume.pdf" target="_blank" rel="noopener">View my résumé (PDF)&nbsp;&rarr;</a></p>
+          </div>
+
+          <div class="about-education">
+            <h3>Education</h3>
+            <ul class="edu-list">
+              <li>
+                <span class="edu-when">Dec 2026</span>
+                <span class="edu-what">M.S. Business Analytics, GPA 4.0</span>
+                <span class="edu-where">Drexel University, LeBow College of Business</span>
+              </li>
+              <li>
+                <span class="edu-when">May 2023</span>
+                <span class="edu-what">B.S. Biochemistry &amp; B.S. Chemistry, magna cum laude</span>
+                <span class="edu-where">West Chester University</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section alt contact">
+    <section id="contact" class="section contact">
       <div class="container">
-        <h2 class="section-title reveal">Contact</h2>
-        <p class="contact-links reveal">
+        <h2 class="section-title scalehead">Contact</h2>
+        <p class="contact-links">
           <a href="mailto:giuliazito42@gmail.com">giuliazito42@gmail.com</a>
           <a href="tel:+17135982885">+1 713-598-2885</a>
           <a href="https://www.linkedin.com/in/giulia-zito-">LinkedIn</a>
@@ -115,25 +125,18 @@
   </main>
 
   <footer class="footer">
-    <p>© 2026 Giulia Zito</p>
+    <p>&copy; 2026 Giulia Zito</p>
   </footer>
 
-  <!-- PROJECT POP-UP (filled in from the tile that was clicked) -->
+  <!-- PROJECT POP-UP -->
   <dialog id="project-dialog" aria-labelledby="dialog-title">
     <button class="close" type="button" aria-label="Close">&times;</button>
-    <h2 id="dialog-title"></h2>
-    <div class="dialog-chart"></div>
-    <div class="dialog-body"></div>
-  </dialog>
-
-  <!-- RESUME POP-UP -->
-  <dialog id="resume-dialog" aria-labelledby="resume-dialog-title">
-    <button class="close" type="button" aria-label="Close">&times;</button>
-    <h2 id="resume-dialog-title">Resume</h2>
-    <div class="dialog-paper">
-      <span class="paper-wrap"><img class="paper" src="resume-page-1.png" alt="Giulia Zito's resume"></span>
+    <div class="dialog-inner">
+      <p class="eyebrow" id="dialog-eyebrow"></p>
+      <h2 id="dialog-title"></h2>
+      <div class="dialog-chart"></div>
+      <div class="dialog-body"></div>
     </div>
-    <p class="dialog-actions"><a class="link" href="resume.pdf" download>Download PDF</a></p>
   </dialog>
 
   <script src="script.js"></script>

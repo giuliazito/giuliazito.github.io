@@ -50,8 +50,9 @@ document.querySelectorAll(".project").forEach((project) => {
     projectEyebrow.textContent = detail.querySelector(".eyebrow")?.textContent || "";
 
     projectChart.innerHTML = "";
-    const img = project.querySelector(".chart").cloneNode(true);
-    projectChart.appendChild(img);
+    const chart = project.querySelector(".chart").cloneNode(true);
+    projectChart.classList.toggle("is-placeholder", chart.classList.contains("placeholder"));
+    projectChart.appendChild(chart);
 
     projectBody.innerHTML = detail.innerHTML;
 

@@ -46,13 +46,13 @@ document.querySelectorAll(".project").forEach((project) => {
   project.querySelector(".tile").addEventListener("click", () => {
     const detail = project.querySelector(".detail");
 
-    projectTitle.textContent = project.querySelector(".tile-title").textContent;
+    const status = project.querySelector(".project-status")?.textContent;
+    projectTitle.textContent = project.querySelector(".tile-title").textContent + (status ? ` | ${status}` : "");
     projectEyebrow.textContent = detail.querySelector(".eyebrow")?.textContent || "";
 
     projectChart.innerHTML = "";
-    const chart = project.querySelector(".chart").cloneNode(true);
-    projectChart.classList.toggle("is-placeholder", chart.classList.contains("placeholder"));
-    projectChart.appendChild(chart);
+    const img = project.querySelector(".chart").cloneNode(true);
+    projectChart.appendChild(img);
 
     projectBody.innerHTML = detail.innerHTML;
 

@@ -6,7 +6,10 @@
   <title>Giulia Zito</title>
   <meta name="description" content="Expert in data cleaning and processing to build visualization and statistical models that support data-driven business decisions.">
 
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@600,500&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -32,6 +35,77 @@
         <h2 class="section-title scalehead" id="projects">Projects</h2>
 
         <div class="grid">
+
+          <article class="project project-churn" id="bank-churn">
+            <button class="tile" type="button" aria-haspopup="dialog">
+              <img class="chart" src="churn-distribution.png" alt="Customer churn distribution: 7,963 stayed and 2,037 churned" width="544" height="410" loading="lazy">
+              <span class="tile-title">Bank Customer Churn: Prediction and Retention Campaign Analysis</span>
+              <span class="project-status">In Progress</span>
+            </button>
+            <div class="detail" hidden>
+              <p class="eyebrow">Machine Learning &middot; Retention Strategy &middot; In Progress</p>
+              <p>This project explores how machine learning can help a bank identify customers at risk of leaving and assess the potential financial benefit of a targeted retention campaign. I compare five classification models and connect their predictions to a business decision: whether the expected value of retaining customers outweighs the cost of contacting them.</p>
+              <p>I developed this independent project to strengthen my skills in exploratory data analysis, machine learning, feature engineering, and data visualization while practicing how to translate model results into business insights.</p>
+              <p><strong>Project status:</strong> In progress. Initial exploratory analysis, model training and testing, and campaign benefit analysis are complete. Next steps include testing additional features, refining model performance, and preparing the final visual presentation.</p>
+
+              <h3>Data and exploratory analysis</h3>
+              <p>The project uses a <a href="https://www.kaggle.com/datasets/shrutimechlearn/churn-modelling" target="_blank" rel="noopener noreferrer">bank customer churn dataset obtained from Kaggle</a>. It includes customer demographics, account characteristics, and a binary indicator of whether each customer churned.</p>
+              <details class="dataset-code">
+                <summary>Download the dataset with Python</summary>
+                <pre><code>import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("shrutimechlearn/churn-modelling")
+
+print("Path to dataset files:", path)</code></pre>
+              </details>
+              <p>I standardized column names and checked for missing values and duplicate rows; neither was detected. I then explored customer characteristics using counts, distributions, and churn rates.</p>
+              <p>The exploratory analysis highlighted several patterns:</p>
+              <ul class="findings">
+                <li><strong>Product ownership:</strong> Customers with three or four products had substantially higher observed churn rates than those with one or two.</li>
+                <li><strong>Geography:</strong> Germany had the highest observed churn rate among the three countries represented.</li>
+                <li><strong>Age:</strong> Customers aged 50–59 had the highest churn rate, suggesting that the relationship between age and churn is nonlinear.</li>
+                <li><strong>Credit score:</strong> Churn rates generally declined across higher credit-score groups, although the pattern was not strictly decreasing.</li>
+                <li><strong>Estimated salary:</strong> Median estimated salary was similar among customers who stayed and those who churned, suggesting that salary alone offered limited separation between the groups.</li>
+              </ul>
+              <p>I also examined churn counts by gender, credit card ownership, and active membership. These comparisons describe the composition of churned customers, but counts alone do not establish which groups are more likely to leave.</p>
+              <p>These patterns describe associations in the dataset rather than causes of churn.</p>
+
+              <h3>Predictive modeling</h3>
+              <p>I trained and evaluated five models:</p>
+              <ul class="findings">
+                <li>Random forest</li>
+                <li>Logistic regression</li>
+                <li>K-nearest neighbors</li>
+                <li>Support vector machine</li>
+                <li>Gradient boosting</li>
+              </ul>
+              <p>The initial models use credit score, gender, age, tenure, balance, number of products, credit card ownership, active membership, estimated salary, and country. Categorical variables were encoded for modeling, and the data were divided into training and test sets.</p>
+              <p>Performance was assessed using confusion matrices, precision, recall, F1-score, and accuracy.</p>
+
+              <h3>Retention campaign benefit analysis</h3>
+              <p>To connect predictive performance with business value, I evaluated a hypothetical campaign targeting every customer predicted to churn.</p>
+              <p>The analysis uses explicit assumptions about:</p>
+              <ul class="findings">
+                <li>Campaign cost per targeted customer</li>
+                <li>Campaign effectiveness: the proportion of targeted customers who would leave without the campaign but are persuaded to stay</li>
+                <li>Profit contribution from each additional retained customer over a specified period</li>
+              </ul>
+              <p>Campaign costs apply to everyone targeted, including false positives. Expected additional retention is calculated from true positives: customers correctly identified as churners in the test data.</p>
+              <p class="benefit-formula"><strong>Expected net benefit = (true positives × campaign effectiveness × profit per retained customer) − (total customers targeted × cost per customer).</strong></p>
+              <p>Under the current assumptions, gradient boosting produces the highest estimated net benefit, <strong>$23,530</strong>. It targets the largest number of customers and therefore incurs the highest campaign cost, but it also identifies the most actual churners. Under the assumed campaign effectiveness, the resulting additional retention offsets the campaign cost.</p>
+              <p>This is a scenario-based estimate, not measured savings. The churn models predict who may leave; they do not establish whether a campaign will persuade those customers to stay.</p>
+
+              <h3>Next steps</h3>
+              <p>I will test additional features and alternative representations, including age and credit-score groups, to assess whether they improve predictive performance and campaign benefit. A validation set will be created to evaluate these improvements. I will also examine how results change under different assumptions about campaign effectiveness, cost, and customer value.</p>
+              <p>The objective is to identify an approach that supports a worthwhile retention strategy, evaluating both predictive performance and its financial implications.</p>
+              <ul class="tags"><li>Python</li><li>pandas</li><li>scikit-learn</li><li>Matplotlib</li><li>Seaborn</li><li>Jupyter</li></ul>
+              <h3>Explore the notebook</h3>
+              <p>Download the Jupyter notebook to explore the code and model outputs. This project and its notebook are being developed.</p>
+              <p class="detail-links"><a class="button" href="Churn.ipynb" download="Churn.ipynb">Download Notebook (.ipynb)</a></p>
+            </div>
+          </article>
+
 
           <!-- Project 1 -->
           <article class="project">
@@ -65,45 +139,6 @@
               <p class="detail-links">
                 <a class="button" href="Airbnb_Analysis.ipynb" download>Download Notebook (.ipynb)</a>
                 <a class="button ghost" href="https://github.com/giuliazito">View on GitHub</a>
-              </p>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project">
-            <button class="tile" type="button">
-              <div class="chart placeholder" role="img" aria-label="Preview coming soon">
-                <svg viewBox="0 0 48 48" aria-hidden="true">
-                  <rect x="6" y="26" width="7" height="16" rx="1"></rect>
-                  <rect x="20" y="16" width="7" height="26" rx="1"></rect>
-                  <rect x="34" y="8" width="7" height="34" rx="1"></rect>
-                  <path d="M4 44 L44 44" stroke-linecap="round"></path>
-                </svg>
-                <span>Preview coming soon</span>
-              </div>
-              <span class="tile-title">Customer Churn Prediction &amp; Financial Risk Analysis</span>
-            </button>
-
-            <div class="detail" hidden>
-              <p class="eyebrow">In Progress &middot; Machine Learning &amp; Financial Analysis</p>
-              <p>This project is a work in progress. The goal is to build a machine learning model that predicts which customers are likely to churn, then translate those predictions into an estimate of the financial risk they represent.</p>
-
-              <h3>Planned approach</h3>
-              <ol class="process">
-                <li><span>Data cleaning &amp; feature engineering</span></li>
-                <li><span>Churn prediction model</span></li>
-                <li><span>Model evaluation &amp; tuning</span></li>
-                <li><span>Revenue-at-risk calculation</span></li>
-                <li><span>Financial impact analysis</span></li>
-              </ol>
-
-              <h3>What this will show</h3>
-              <p>Once the model is trained, the plan is to quantify the revenue at risk from predicted churners and estimate the potential financial impact of retention efforts, so the results speak to both model accuracy and business value.</p>
-
-              <ul class="tags"><li>Python</li><li>pandas</li><li>scikit-learn</li><li>XGBoost</li><li>Matplotlib</li></ul>
-
-              <p class="detail-links">
-                <span class="button ghost disabled">Notebook coming soon</span>
               </p>
             </div>
           </article>

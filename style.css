@@ -4,8 +4,8 @@
    free/Google font). Body: League Spartan, as specified.
    ========================================================== */
 :root {
-  --font-heading: "Clash Display", "Poppins", sans-serif;
-  --font-body: Arial, Helvetica, sans-serif;
+  --font-heading: "Clash Display", sans-serif;
+  --font-body: "League Spartan", "Segoe UI", system-ui, sans-serif;
   --font-code: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --black: #05060c;
@@ -55,7 +55,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-
 
 .container { max-width: var(--width); margin: 0 auto; padding: 0 2rem; }
 
-h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; letter-spacing: -0.01em; }
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
 
 /* ==========================================================
    SECTIONS  (no dividing lines — one continuous background)
@@ -86,7 +91,7 @@ h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; letter-spacing:
    ========================================================== */
 .hero-split {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
   gap: 2.5rem;
   max-width: var(--width);
   margin: 0 auto;
@@ -183,52 +188,15 @@ h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; letter-spacing:
   padding: 0.5rem;
 }
 
-.chart.placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  width: 100%;
-  aspect-ratio: 2.8 / 1;
-  background:
-    radial-gradient(400px 220px at 30% 20%, var(--purple-dim), transparent 60%),
-    radial-gradient(400px 220px at 80% 80%, var(--blue-dim), transparent 60%),
-    rgba(255, 255, 255, 0.03);
-  border-bottom: 1px dashed var(--line);
-}
-
-.chart.placeholder svg {
-  width: 34px;
-  height: 34px;
-  fill: none;
-  stroke: var(--purple);
-  stroke-width: 2;
-}
-.chart.placeholder svg rect { fill: var(--purple); stroke: none; opacity: 0.85; }
-
-.chart.placeholder span {
-  color: var(--muted);
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
-}
-
-.button.ghost.disabled {
-  border-color: var(--line);
-  color: var(--muted);
-  cursor: default;
-  pointer-events: none;
-}
-
 .tile .tile-title {
   display: block;
   padding: 1.15rem 1.25rem 1.4rem;
   color: var(--ink);
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
   line-height: 1.35;
-  letter-spacing: normal;
+  letter-spacing: -0.005em;
 }
 
 /* ==========================================================
@@ -271,11 +239,8 @@ dialog[open] { animation: pop 0.25s ease; }
 
 dialog h2 {
   margin: 0 3rem 1.75rem 0;
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
-  line-height: 1.25;
-  letter-spacing: normal;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  line-height: 1.15;
   color: var(--ink);
 }
 
@@ -298,23 +263,12 @@ dialog h2 {
 
 .dialog-chart {
   margin-bottom: 2rem;
+  padding: 1.5rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  overflow: hidden;
   background: #fff;
-  padding: 1.5rem;
 }
 .dialog-chart img { display: block; width: 100%; height: auto; }
-
-.dialog-chart.is-placeholder {
-  padding: 0;
-  background: transparent;
-}
-.dialog-chart.is-placeholder .chart.placeholder {
-  aspect-ratio: auto;
-  min-height: 220px;
-  border-bottom: 0;
-}
 
 .dialog-body h3 {
   margin: 2rem 0 1rem;
@@ -349,7 +303,7 @@ dialog h2 {
   margin-bottom: 0.4rem;
   color: var(--purple);
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
 }
@@ -480,3 +434,17 @@ dialog h2 {
   .tile { transition: none; }
   dialog[open] { animation: none; }
 }
+
+/* Churn case study */
+.project-churn .tile img.chart { aspect-ratio: 544 / 410; }
+.project-churn .tile-title { padding-bottom: 0.65rem; }
+.project-status { display: inline-block; margin: 0 1.25rem 1.25rem; padding: 0.25rem 0.7rem; border-radius: 999px; background: var(--purple-dim); color: var(--purple); font: 600 0.8rem var(--font-body); }
+.findings { padding-left: 1.3rem; margin: 0 0 1.5rem; max-width: 42rem; }
+.findings li { margin-bottom: 0.55rem; }
+.dataset-code { margin: 0 0 1.5rem; padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius); }
+.dataset-code summary { cursor: pointer; color: var(--purple); font-weight: 600; }
+.dataset-code pre { overflow-x: auto; max-width: 100%; font-size: 0.8rem; }
+.dataset-code code { font-family: var(--font-code); }
+.dialog-body .benefit-formula { padding: 1.25rem; border-left: 3px solid var(--purple); background: var(--purple-dim); border-radius: 0 8px 8px 0; }
+.dialog-inner { max-height: min(88vh, calc(100dvh - 3rem)); }
+.dialog-body { overflow-wrap: anywhere; }
